@@ -29,7 +29,7 @@ modules:
     path: run.sh
   - type: file
     url: https://2006Scape.org/Downloads/2006Scape_Launcher.jar
-    sha256: 76b1555c9297a3ae69a9044d62b87c2f5607de9437960cf59ffe39aa931fbe4b
+    sha256: d5d29d4124186e739728722b278bd7f7e494b9e73e43e67fdda039cbd2f61d8a
   - type: file
     path: org._2006Scape.Launcher.desktop
   - type: file
