@@ -1,38 +1,40 @@
 app-id: org._2006Scape.Launcher
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 command: run.sh
 sdk-extensions:
-- org.freedesktop.Sdk.Extension.openjdk8
+  - org.freedesktop.Sdk.Extension.openjdk8
 finish-args:
   - --socket=x11
   - --share=ipc
   - --share=network
   - --filesystem=~/2006Scape:create
   - --socket=pulseaudio
+cleanup:
+  - /jre/man
 modules:
-- name: openjdk
-  buildsystem: simple
-  build-commands:
-  - "/usr/lib/sdk/openjdk8/install.sh"
-- name: 2006Scape
-  buildsystem: simple
-  build-commands:
-  - install -D run.sh /app/bin/run.sh
-  - install -D 2006Scape_Launcher.jar /app/bin/2006Scape_Launcher.jar
-  - install -D org._2006Scape.Launcher.desktop /app/share/applications/org._2006Scape.Launcher.desktop
-  - install -D icon.svg /app/share/icons/hicolor/scalable/apps/org._2006Scape.Launcher.svg
-  - install -D org._2006Scape.Launcher.appdata.xml /app/share/metainfo/org._2006Scape.Launcher.appdata.xml
-  sources:
-  - type: file
-    path: run.sh
-  - type: file
-    url: https://2006Scape.org/Downloads/2006Scape_Launcher.jar
-    sha256: de3df12cd43ecbeba57b662001c9c2cf39b9c7aca4b9bedf36f6e3b56619a668
-  - type: file
-    path: org._2006Scape.Launcher.desktop
-  - type: file
-    path: icon.svg
-  - type: file
-    path: org._2006Scape.Launcher.appdata.xml
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk8/install.sh
+  - name: 2006Scape
+    buildsystem: simple
+    build-commands:
+      - install -D run.sh -t /app/bin/
+      - install -D 2006Scape_Launcher.jar -t /app/bin/
+      - install -D ${FLATPAK_ID}.desktop -t /app/share/applications/
+      - install -D ${FLATPAK_ID}.svg -t /app/share/icons/hicolor/scalable/apps/
+      - install -D ${FLATPAK_ID}.appdata.xml -t /app/share/metainfo/
+    sources:
+    - type: file
+      path: run.sh
+    - type: file
+      url: https://2006Scape.org/Downloads/2006Scape_Launcher.jar
+      sha256: de3df12cd43ecbeba57b662001c9c2cf39b9c7aca4b9bedf36f6e3b56619a668
+    - type: file
+      path: org._2006Scape.Launcher.desktop
+    - type: file
+      path: org._2006Scape.Launcher.svg
+    - type: file
+      path: org._2006Scape.Launcher.appdata.xml

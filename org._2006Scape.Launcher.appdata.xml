@@ -3,7 +3,9 @@
   <id>org._2006Scape.Launcher</id>
   <launchable type="desktop-id">org._2006Scape.Launcher.desktop</launchable>
   <name>2006Scape</name>
-  <developer_name>2006Scape</developer_name>
+  <developer id="org.2006Scape">
+    <name>2006Scape</name>
+  </developer>
   <summary>2006Scape is a free, Runescape 2006 Emulation server</summary>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>AGPL-3.0-or-later</project_license>
